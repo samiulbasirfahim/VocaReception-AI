@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.SimonSabir"
+      "bundleIdentifier": "com.SimonSabir.voiceAssistant"
     },
     "android": {
       "adaptiveIcon": {
@@ -21,7 +21,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.SimonSabir"
+      "package": "com.SimonSabir.voiceAssistant"
     },
     "web": {
       "output": "static",
