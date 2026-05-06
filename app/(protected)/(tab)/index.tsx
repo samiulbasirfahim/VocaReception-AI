@@ -1,4 +1,4 @@
-import SafeKeyboardScrollView from "@/features/common/layout/safe-keyboard-scroll-view";
+import SafeLayout from "@/features/common/layout/safe-keyboard-scroll-view";
 import HomeScren from "@/features/home/screens/home-screen";
 import { TabIconRenderer } from "@/features/tabs/components/icon-renderer";
 import { Tabs } from "@/lib/app-tab";

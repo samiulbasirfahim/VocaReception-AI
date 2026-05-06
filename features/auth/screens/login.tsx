@@ -1,14 +1,14 @@
 import { AppButton } from "@/features/common/components/button";
 import { AppInput } from "@/features/common/components/input";
 import AppText from "@/features/common/components/text";
-import SafeKeyboardScrollView from "@/features/common/layout/safe-keyboard-scroll-view";
+import SafeLayout from "@/features/common/layout/safe-keyboard-scroll-view";
 import { useAuthStore } from "@/features/common/store/auth.store";
 import { StyleSheet, View } from "react-native";
 
 export default function LoginScreen() {
     const setRfToken = useAuthStore((x) => x.setRefreshToken);
     return (
-        <SafeKeyboardScrollView centered verticalCentered>
+        <SafeLayout centered verticalCentered>
             <AppText variant="h2" numberOfLines={1} center>
                 Welcome Back
             </AppText>
@@ -22,7 +22,7 @@ export default function LoginScreen() {
             <AppButton fullWidth onPress={() => setRfToken("")}>
                 Login
             </AppButton>
-        </SafeKeyboardScrollView>
+        </SafeLayout>
     );
 }
 

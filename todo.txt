@@ -1,5 +1,4 @@
 4-5-2026
-[ ] Home Screen
-[ ] Call Details Screen
-[ ] Call Screen
 [ ] Reusable Component: when scrolled down and then scorlling up shows a button shortcut to top. it disappear when scrolling down again
+[ ] Reusable componet: fade-to-dark shadow on horizontal scrollable container, to indicate that there' more content.
+

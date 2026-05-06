@@ -1,11 +1,11 @@
+import AppointmentScreens from "@/features/appointments/screens/appointment-screens";
 import { TabIconRenderer } from "@/features/tabs/components/icon-renderer";
 import { Tabs } from "@/lib/app-tab";
 import { CalendarClock } from "lucide-react-native";
-import { Text, View } from "react-native";
 
 export default function Index() {
     return (
-        <View>
+        <>
             <Tabs.Screen
                 options={{
                     title: "Meets",
@@ -14,6 +14,7 @@ export default function Index() {
                     ),
                 }}
             />
-        </View>
+            <AppointmentScreens />
+        </>
     );
 }

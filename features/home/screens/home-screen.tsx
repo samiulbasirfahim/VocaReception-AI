@@ -1,23 +1,31 @@
 import HomeHeader from "../components/home-header";
-import SafeKeyboardScrollView from "@/features/common/layout/safe-keyboard-scroll-view";
+import SafeLayout from "@/features/common/layout/safe-keyboard-scroll-view";
 import { HomeStatCards } from "../components/home-stat-card";
 import { AiSection } from "@/features/common/components/ai-section";
 import HomeQuickAction from "../components/home-quick-actions";
 import { HomeRecentActivityFilter } from "../components/home-recent-activity-filter";
 import { useState } from "react";
+import { formatFilters } from "@/features/common/utils/format-filters";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
-const FILTERS = ["All", "High", "Leads", "VIP", "Meets"];
-const FILTERS_COUNT = [4, 5, 22, 11, 84];
+const FILTERS_COUNT = {
+    all: 4,
+    high: 5,
+    leads: 22,
+    vip: 11,
+    meets: 84,
+};
 
 export default function HomeScren() {
     const [selectedIndex, setSelectedIndex] = useState(0);
-    const filters = FILTERS.map((x, i) => {
-        return `${x}(${FILTERS_COUNT[i]})`;
-    });
+    const filters = formatFilters(FILTERS_COUNT);
+
+    const tabHeight = useBottomTabBarHeight();
 
     return (
-        <SafeKeyboardScrollView includeTopInsets gap={24}>
+        <SafeLayout includeTopInsets gap={24} bottomExtraPadding={tabHeight}>
             <HomeHeader />
+
             <HomeStatCards />
             <AiSection
                 title="AI INSIGHT"
@@ -25,11 +33,12 @@ export default function HomeScren() {
                 footer="Booking rate up 18% vs. last week"
             />
             <HomeQuickAction />
+
             <HomeRecentActivityFilter
                 filters={filters}
                 setSelectedIdx={setSelectedIndex}
                 selectedIdx={selectedIndex}
             />
-        </SafeKeyboardScrollView>
+        </SafeLayout>
     );
 }
