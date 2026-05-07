@@ -25,6 +25,9 @@ const sts = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
         width: "100%",
+        backgroundColor: AppColor.background,
+        paddingTop: 20,
+        paddingBottom: 12,
     },
     titleSide: {},
     iconWrapper: {

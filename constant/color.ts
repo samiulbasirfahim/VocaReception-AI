@@ -15,6 +15,8 @@ export const AppColor = {
     error_bg: "#FEE2E2",
     error: "#DC2626",
 
+    secondary: "#712AE2",
+
     warning: "#F59E0Bl",
     border: "#94A3B88B",
 };

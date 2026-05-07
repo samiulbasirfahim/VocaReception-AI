@@ -28,14 +28,14 @@ export const AppShadow = {
     }),
     md: Platform.select({
         ios: {
-            shadowColor: AppColor.border,
+            shadowColor: AppColor.foreground_muted,
             shadowOffset: { width: 0, height: 4 },
             shadowOpacity: 0.1,
             shadowRadius: 8,
         },
         android: {
             elevation: 4,
-            shadowColor: AppColor.border,
+            shadowColor: AppColor.foreground_muted,
         },
     }),
 };

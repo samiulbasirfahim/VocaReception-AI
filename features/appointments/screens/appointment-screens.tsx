@@ -1,12 +1,12 @@
+import SafeLayout from "@/features/common/layout/safe-keyboard-scroll-view";
 import AppointmentHeader from "../components/appointment-header";
 import AppointmentList from "../components/appointment-list";
-import SafeViewLayout from "@/features/common/layout/safe-view";
 
 export default function AppointmentScreens() {
     return (
-        <SafeViewLayout includeTopInsets gap={24}>
+        <SafeLayout includeTopInsets gap={24} fixedHeaderIndices={[0]}>
             <AppointmentHeader />
             <AppointmentList />
-        </SafeViewLayout>
+        </SafeLayout>
     );
 }

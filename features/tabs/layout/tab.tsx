@@ -2,13 +2,14 @@ import { AppColor } from "@/constant/color";
 import { Tabs } from "@/lib/app-tab";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import TabLabelRender from "../components/label-renderer";
+import { TabIconRenderer } from "../components/icon-renderer";
+import { CalendarClock, Home, Phone, Users } from "lucide-react-native";
 
 export default function TabLayout() {
     const { bottom } = useSafeAreaInsets();
     return (
         <Tabs
             screenOptions={{
-                lazy: false,
                 headerShown: false,
                 tabBarStyle: {
                     borderTopRightRadius: 30,
@@ -35,10 +36,42 @@ export default function TabLayout() {
                 },
             }}
         >
-            <Tabs.Screen name="index" />
-            <Tabs.Screen name="calls" />
-            <Tabs.Screen name="leads" />
-            <Tabs.Screen name="appointments" />
+            <Tabs.Screen
+                name="index"
+                options={{
+                    title: "Home",
+                    tabBarIcon: (props) => (
+                        <TabIconRenderer focused={props.focused} icon={Home} />
+                    ),
+                }}
+            />
+            <Tabs.Screen
+                name="calls"
+                options={{
+                    title: "Calls",
+                    tabBarIcon: (props) => (
+                        <TabIconRenderer focused={props.focused} icon={Phone} />
+                    ),
+                }}
+            />
+            <Tabs.Screen
+                name="leads"
+                options={{
+                    title: "Leads",
+                    tabBarIcon: (props) => (
+                        <TabIconRenderer focused={props.focused} icon={Users} />
+                    ),
+                }}
+            />
+            <Tabs.Screen
+                name="appointments"
+                options={{
+                    title: "Meets",
+                    tabBarIcon: (props) => (
+                        <TabIconRenderer focused={props.focused} icon={CalendarClock} />
+                    ),
+                }}
+            />
         </Tabs>
     );
 }

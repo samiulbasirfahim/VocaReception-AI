@@ -1,10 +1,11 @@
 import { AppColor } from "@/constant/color";
 import { AppInput } from "@/features/common/components/input";
 import { ScrollableFilter } from "@/features/common/components/scrollable-filter";
+import AppText from "@/features/common/components/text";
 import { Search } from "lucide-react-native";
 import { StyleSheet, View } from "react-native";
 
-type LeadsSearchProps = {
+type CallHeaderProps = {
     onSearch: (query: string) => void;
     searchQuery?: string;
     filters: string[];
@@ -12,12 +13,12 @@ type LeadsSearchProps = {
     setSelectedIdx: (idx: number) => void;
 };
 
-export default function LeadsSearch({
+export default function CallSearch({
     onSearch,
     filters,
     selectedIdx,
     setSelectedIdx,
-}: LeadsSearchProps) {
+}: CallHeaderProps) {
     return (
         <View style={sts.container}>
             <AppInput
@@ -37,7 +38,7 @@ export default function LeadsSearch({
 
 const sts = StyleSheet.create({
     container: {
-        backgroundColor: AppColor.background,
         paddingTop: 20,
+        backgroundColor: AppColor.background,
     },
 });

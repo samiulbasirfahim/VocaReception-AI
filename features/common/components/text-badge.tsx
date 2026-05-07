@@ -6,6 +6,7 @@ type TextBadgeProps = {
     backgroundColor: string;
     borderColor: string;
     textColor: string;
+    lg?: boolean;
 };
 
 export function TextBadge({
@@ -13,6 +14,7 @@ export function TextBadge({
     backgroundColor,
     borderColor,
     textColor,
+    lg = false,
 }: TextBadgeProps) {
     return (
         <View style={[sts.container, { backgroundColor, borderColor }]}>
@@ -20,7 +22,7 @@ export function TextBadge({
                 style={{
                     color: textColor,
                 }}
-                variant="caption"
+                variant={lg ? "body" : "caption"}
                 ellipsizeMode="tail"
                 numberOfLines={1}
             >

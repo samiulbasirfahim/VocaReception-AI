@@ -63,6 +63,7 @@ const sts = StyleSheet.create({
         flexDirection: "row",
         gap: 12,
         width: "100%",
+        marginBottom: -20,
     },
     container: {
         gap: 6,

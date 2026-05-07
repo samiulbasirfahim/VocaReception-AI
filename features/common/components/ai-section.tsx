@@ -18,7 +18,7 @@ export function AiSection({ title, description, footer }: Props) {
                     {title}
                 </AppText>
             </View>
-            <AppText background variant="body-sm">
+            <AppText background variant="body-sm" weight="light">
                 {description}
             </AppText>
             {footer && (

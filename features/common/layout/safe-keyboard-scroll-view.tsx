@@ -60,7 +60,7 @@ export default function SafeLayout({
         <View style={{ flex: 1, backgroundColor: AppColor.background }}>
             <KeyboardAwareScrollView
                 stickyHeaderIndices={fixedHeaderIndices}
-                contentInset={{ top: top - 12 }}
+                contentInset={{ top: top - 20 }}
                 style={{ flex: 1 }}
                 contentContainerStyle={{
                     ...paddingConf,
@@ -78,22 +78,25 @@ export default function SafeLayout({
                 {children}
             </KeyboardAwareScrollView>
 
-            <LinearGradient
-                colors={[
-                    AppColor.background,
-                    AppColor.background,
-                    AppColor.background + "00",
-                ]}
-                pointerEvents="none"
-                style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: top + 16,
-                    zIndex: 1,
-                }}
-            />
+            {includeTopInsets && (
+                <LinearGradient
+                    colors={[
+                        AppColor.background,
+                        AppColor.background + "F6",
+                        AppColor.background + "66",
+                        AppColor.background + "00",
+                    ]}
+                    pointerEvents="none"
+                    style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: top + 16,
+                        zIndex: 1,
+                    }}
+                />
+            )}
         </View>
     );
 }

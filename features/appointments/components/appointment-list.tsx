@@ -1,36 +1,28 @@
 import { APPOINTMENTS } from "@/lib/fake-data";
-import { LegendList } from "@legendapp/list";
-import { AppointmentListItem } from "./appointment-list-item";
+import { StyleSheet, View } from "react-native";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
-import { StyleSheet } from "react-native";
+import { AppointmentListItem } from "./appointment-list-item";
 
 export default function AppointmentList() {
     const tabHeight = useBottomTabBarHeight();
     return (
-        <LegendList
-            onRefresh={() => new Promise((res) => setTimeout(res, 1000))}
-            drawDistance={500}
-            contentContainerStyle={[
-                sts.contentContainerStyle,
+        <View
+            style={[
+                sts.container,
                 {
                     paddingBottom: tabHeight + 12,
                 },
             ]}
-            data={APPOINTMENTS}
-            renderItem={(item) => <AppointmentListItem appointment={item.item} />}
-            keyExtractor={(item) => item.id}
-            recycleItems
-            style={sts.listContainer}
-        />
+        >
+            {APPOINTMENTS.map((appointment) => (
+                <AppointmentListItem key={appointment.id} appointment={appointment} />
+            ))}
+        </View>
     );
 }
-
 const sts = StyleSheet.create({
-    listContainer: {
-        flex: 1,
+    container: {
         width: "100%",
-    },
-    contentContainerStyle: {
         gap: 12,
     },
 });

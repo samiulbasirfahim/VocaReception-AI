@@ -8,6 +8,7 @@ import {
     View,
 } from "react-native";
 import AppText from "./text";
+import { ReactNode } from "react";
 
 // ─── Variants ─────────────────────────────────────────────────────────────────
 
@@ -86,7 +87,7 @@ type AppButtonProps = TouchableOpacityProps & {
     loading?: boolean;
     leftIcon?: LucideIcon;
     rightIcon?: LucideIcon;
-    children: string;
+    children: ReactNode | ReactNode[] | string;
 };
 
 // ─── Component ────────────────────────────────────────────────────────────────

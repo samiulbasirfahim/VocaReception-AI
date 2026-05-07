@@ -12,10 +12,10 @@ type Props = {
     lead: Lead;
 };
 
-export default function LeadsListItem() {
-    const status: Lead["status"] = "new";
-    const priority: Lead["priority"] = "high";
-    const type: Lead["type"] = "sales";
+export default function LeadsListItem({ lead }: Props) {
+    const status: Lead["status"] = lead.status;
+    const priority: Lead["priority"] = lead.priority;
+    const type: Lead["type"] = lead.type;
     const mappedType = mapLeadType(type);
     const mappedPriority = mapLeadPriority(priority);
     const mappedStatus = mapLeadStatus(status);
@@ -24,7 +24,7 @@ export default function LeadsListItem() {
         <View style={sts.container}>
             <View style={sts.row}>
                 <AppText variant="body" weight="bold">
-                    John Davidson
+                    {lead.title}
                 </AppText>
 
                 <TextBadge
@@ -45,7 +45,7 @@ export default function LeadsListItem() {
             <View style={sts.divider} />
             <View style={sts.row}>
                 <AppText variant="label" muted>
-                    Last contact: 12th Aug, 3:00 PM
+                    Last contact: 
                 </AppText>
                 <TextBadge
                     text={mappedStatus.label}

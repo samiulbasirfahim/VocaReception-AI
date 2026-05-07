@@ -7,6 +7,7 @@ import { HomeRecentActivityFilter } from "../components/home-recent-activity-fil
 import { useState } from "react";
 import { formatFilters } from "@/features/common/utils/format-filters";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
+import HomeCallList from "../components/home-call-list";
 
 const FILTERS_COUNT = {
     all: 4,
@@ -23,7 +24,12 @@ export default function HomeScren() {
     const tabHeight = useBottomTabBarHeight();
 
     return (
-        <SafeLayout includeTopInsets gap={24} bottomExtraPadding={tabHeight}>
+        <SafeLayout
+            includeTopInsets
+            gap={24}
+            bottomExtraPadding={tabHeight}
+            fixedHeaderIndices={[4]}
+        >
             <HomeHeader />
 
             <HomeStatCards />
@@ -39,6 +45,7 @@ export default function HomeScren() {
                 setSelectedIdx={setSelectedIndex}
                 selectedIdx={selectedIndex}
             />
+            <HomeCallList />
         </SafeLayout>
     );
 }

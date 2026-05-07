@@ -1,11 +1,12 @@
 import SafeLayout from "@/features/common/layout/safe-keyboard-scroll-view";
-import LeadsHeadder from "../components/leads-heaer";
+import LeadsHeadder from "../components/leads-header";
 import LeadsIcons from "../components/leads-icons";
 import LeadsSearch from "../components/leads-search";
 import { useState } from "react";
 import useDebounce from "@/features/common/hooks/useDebounce";
 import { formatFilters } from "@/features/common/utils/format-filters";
 import LeadsListItem from "../components/leads-list-item";
+import LeadsList from "../components/leads-list";
 
 const FILTERS_COUNT = {
     all: 4,
@@ -33,17 +34,7 @@ export default function LeadsScreen() {
                 setSelectedIdx={setSelectedIndex}
                 selectedIdx={selectedIndex}
             />
-
-            <LeadsListItem />
-            <LeadsListItem />
-            <LeadsListItem />
-            <LeadsListItem />
-            <LeadsListItem />
-            <LeadsListItem />
-            <LeadsListItem />
-            <LeadsListItem />
-            <LeadsListItem />
-            <LeadsListItem />
+            <LeadsList />
         </SafeLayout>
     );
 }
