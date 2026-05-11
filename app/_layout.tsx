@@ -1,23 +1,18 @@
-import { useAuthStore } from "@/features/common/store/auth.store";
-import { Stack } from "expo-router";
-import { KeyboardProvider } from "react-native-keyboard-controller";
+import { RootLayout } from "@/features/auth/layout/root-layout";
+import { queryClient } from "@/features/common/utils/queryClient";
+import { QueryClientProvider } from "@tanstack/react-query";
+import * as SplashScreen from "expo-splash-screen";
 
-export default function RootLayout() {
-    const isLoggedIn = useAuthStore((x) => x.isLoggedIn);
+SplashScreen.setOptions({
+    fade: false,
+    duration: 0,
+});
+
+SplashScreen.preventAutoHideAsync();
+export default function RootWrapper() {
     return (
-        <KeyboardProvider>
-            <Stack
-                screenOptions={{
-                    headerShown: false,
-                }}
-            >
-                <Stack.Protected guard={isLoggedIn}>
-                    <Stack.Screen name="(protected)" />
-                </Stack.Protected>
-                <Stack.Protected guard={!isLoggedIn}>
-                    <Stack.Screen name="(auth)" />
-                </Stack.Protected>
-            </Stack>
-        </KeyboardProvider>
+        <QueryClientProvider client={queryClient}>
+            <RootLayout />
+        </QueryClientProvider>
     );
 }

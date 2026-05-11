@@ -59,6 +59,8 @@ export default function SafeLayout({
     return (
         <View style={{ flex: 1, backgroundColor: AppColor.background }}>
             <KeyboardAwareScrollView
+                keyboardShouldPersistTaps="handled"
+                keyboardDismissMode="interactive"
                 stickyHeaderIndices={fixedHeaderIndices}
                 contentInset={{ top: top - 20 }}
                 style={{ flex: 1 }}
