@@ -1,9 +1,13 @@
 import { AppColor } from "@/constant/color";
 import AppText from "@/features/common/components/text";
+import { router } from "expo-router";
 import { Calendar } from "lucide-react-native";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 
 export default function AppointmentHeader() {
+    const handleCalendarPress = () => {
+        router.push("/calendar");
+    };
     return (
         <View style={sts.conatiner}>
             <View style={sts.titleSide}>
@@ -12,7 +16,11 @@ export default function AppointmentHeader() {
                     Synced with GoHighLevel(GHL)
                 </AppText>
             </View>
-            <TouchableOpacity activeOpacity={0.75} style={sts.iconWrapper}>
+            <TouchableOpacity
+                activeOpacity={0.75}
+                style={sts.iconWrapper}
+                onPress={handleCalendarPress}
+            >
                 <Calendar color={AppColor.background} size={30} />
             </TouchableOpacity>
         </View>

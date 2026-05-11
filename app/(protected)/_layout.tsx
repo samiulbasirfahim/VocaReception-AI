@@ -10,6 +10,19 @@ export default function ProtectedLayout() {
             screenOptions={{
                 headerShown: false,
             }}
-        />
+        >
+            <Stack.Screen name="(tab)" />
+            <Stack.Screen name="call-details" />
+            <Stack.Screen
+                name="calendar"
+                options={{
+                    presentation: "formSheet",
+                    sheetCornerRadius: 16,
+                    sheetElevation: 8,
+                    sheetInitialDetentIndex: 0,
+                    sheetAllowedDetents: "fitToContents",
+                }}
+            />
+        </Stack>
     );
 }

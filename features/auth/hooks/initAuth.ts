@@ -1,7 +1,7 @@
 import { useAuthStore } from "@/features/auth/store/auth.store";
 import { refreshAccessToken } from "@/features/common/utils/apiClient";
 import { useEffect, useState } from "react";
-import * as SplashScreen from 'expo-splash-screen';
+import * as SplashScreen from "expo-splash-screen";
 
 export function useInitAuth() {
     const hydrated = useAuthStore((x) => x.isHydrated);
@@ -9,7 +9,12 @@ export function useInitAuth() {
     const [initializedAuth, setInitializedAuth] = useState<boolean>(false);
 
     useEffect(() => {
-        if (hydrated && refreshToken) {
+        if (hydrated) {
+            if (!refreshToken) {
+                setInitializedAuth(true);
+                SplashScreen.hideAsync();
+                return;
+            }
             refreshAccessToken()
                 .then(() => {
                     console.log("Access token refreshed successfully.");

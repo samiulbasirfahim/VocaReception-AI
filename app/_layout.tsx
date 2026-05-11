@@ -9,6 +9,7 @@ SplashScreen.setOptions({
 });
 
 SplashScreen.preventAutoHideAsync();
+
 export default function RootWrapper() {
     return (
         <QueryClientProvider client={queryClient}>

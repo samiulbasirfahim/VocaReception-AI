@@ -1,7 +1,8 @@
 import { AppColor } from "@/constant/color";
 import AppText from "@/features/common/components/text";
+import { router } from "expo-router";
 import { CalendarCheck2, LucideIcon, UserSearch } from "lucide-react-native";
-import { Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 type Button = {
     icon: LucideIcon;
@@ -17,7 +18,7 @@ export default function HomeQuickAction() {
             iconBg: "#4F46E5",
             icon: UserSearch,
             onPress: () => {
-                console.log("View Leads press");
+                router.push("/leads");
             },
         },
         {
@@ -25,7 +26,7 @@ export default function HomeQuickAction() {
             iconBg: "#191B24",
             icon: CalendarCheck2,
             onPress: () => {
-                console.log("View Calendar");
+                router.push("/appointments");
             },
         },
     ];
