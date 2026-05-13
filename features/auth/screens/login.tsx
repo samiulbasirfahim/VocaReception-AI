@@ -23,7 +23,7 @@ export default function LoginScreen() {
                 Welcome Back
             </AppText>
             <AppText variant="body-sm" muted center>
-                Sign in to your ----------
+                Sign in to your account
             </AppText>
             <View style={sts.divider} />
             <AppInput

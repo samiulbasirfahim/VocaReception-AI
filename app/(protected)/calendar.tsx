@@ -1,6 +1,8 @@
 import { AppColor } from "@/constant/color";
 import { useCalendarStore } from "@/features/appointments/store/params.store";
+import { AppButton } from "@/features/common/components/button";
 import AppText from "@/features/common/components/text";
+import { Eraser } from "lucide-react-native";
 import { StyleSheet, View, ActivityIndicator } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import DateTimePicker, { useDefaultStyles } from "react-native-ui-datepicker";
@@ -44,8 +46,8 @@ export default function Calendar() {
         <View style={sts.container}>
             <DateTimePicker
                 mode="range"
-                startDate={startDate} // Stored as ISO String
-                endDate={endDate} // Stored as ISO String
+                startDate={startJSDate}
+                endDate={endJSDate}
                 styles={{
                     ...defaultStyles,
                 }}
@@ -61,6 +63,13 @@ export default function Calendar() {
                         <AppText style={sts.label}>Selected Period</AppText>
                         <AppText style={sts.dateText}>{getRangeText()}</AppText>
                     </View>
+                    <AppButton
+                        variant="danger"
+                        size="sm"
+                        onPress={() => setRange(null, null)}
+                    >
+                        <Eraser />
+                    </AppButton>
                 </View>
             </View>
 

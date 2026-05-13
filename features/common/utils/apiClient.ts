@@ -123,7 +123,14 @@ apiClient.interceptors.response.use(
     },
 );
 
-// apiClient.interceptors.request.use((req) => {
-//     console.log("REQUEST DATA:", req.data);
-//     return req;
-// });
+apiClient.interceptors.request.use((req) => {
+    console.log("REQUEST DATA:", req.data);
+    const queryParams = new URLSearchParams(req.params).toString();
+    console.log("REQUEST URL:", `${req.baseURL}${req.url}?${queryParams}`);
+    return req;
+});
+
+apiClient.interceptors.response.use((res) => {
+    console.log("RESPONSE DATA:", res.data);
+    return res;
+});

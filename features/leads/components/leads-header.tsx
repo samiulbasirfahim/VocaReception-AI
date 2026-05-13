@@ -1,12 +1,16 @@
 import AppText from "@/features/common/components/text";
 import { View } from "react-native";
 
-export default function LeadsHeadder() {
+type LeadsHeadderProps = {
+    total?: number;
+};
+
+export default function LeadsHeadder({ total = 0 }: LeadsHeadderProps) {
     return (
         <View>
             <AppText variant="h1">Leads</AppText>
             <AppText variant="label" muted>
-                6 qualified leads
+                {total} total leads
             </AppText>
         </View>
     );

@@ -1,20 +1,18 @@
 import { APPOINTMENTS } from "@/lib/fake-data";
 import { StyleSheet, View } from "react-native";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
+import { Appointment } from "../type/appointment";
 import { AppointmentListItem } from "./appointment-list-item";
 
-export default function AppointmentList() {
-    const tabHeight = useBottomTabBarHeight();
+type AppointmentListProps = {
+    appointments?: Appointment[];
+};
+
+export default function AppointmentList({
+    appointments = APPOINTMENTS,
+}: AppointmentListProps) {
     return (
-        <View
-            style={[
-                sts.container,
-                {
-                    paddingBottom: tabHeight + 12,
-                },
-            ]}
-        >
-            {APPOINTMENTS.map((appointment) => (
+        <View style={[sts.container]}>
+            {appointments.map((appointment) => (
                 <AppointmentListItem key={appointment.id} appointment={appointment} />
             ))}
         </View>

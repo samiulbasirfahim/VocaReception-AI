@@ -1,20 +1,16 @@
 import { LEADS } from "@/lib/fake-data";
 import { StyleSheet, View } from "react-native";
 import LeadsListItem from "./leads-list-item";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
+import { Lead } from "../type/lead";
 
-export default function LeadsList() {
-    const tabHeight = useBottomTabBarHeight();
+type LeadsListProps = {
+    leads?: Lead[];
+};
+
+export default function LeadsList({ leads = LEADS }: LeadsListProps) {
     return (
-        <View
-            style={[
-                sts.container,
-                {
-                    paddingBottom: tabHeight + 12,
-                },
-            ]}
-        >
-            {LEADS.map((lead) => (
+        <View style={[sts.container]}>
+            {leads.map((lead) => (
                 <LeadsListItem key={lead.id} lead={lead} />
             ))}
         </View>

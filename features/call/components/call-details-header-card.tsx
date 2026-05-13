@@ -3,20 +3,60 @@ import { AppShadow } from "@/constant/shadow";
 import { StatusBadge } from "@/features/common/components/status-badge";
 import AppText from "@/features/common/components/text";
 import { TextBadge } from "@/features/common/components/text-badge";
+import { Call } from "@/features/common/type/call";
+import { Status } from "@/features/common/type/status";
 import { mapCallStatus } from "@/features/common/utils/map-call-status";
 import { Clock, Phone } from "lucide-react-native";
 import { StyleSheet, View } from "react-native";
 
-export function CallDetailsHeaderCard() {
-    const mappedCallStatus = mapCallStatus("booked");
+type Props = {
+    name: string;
+    status: Call["status"];
+    group: Status;
+    phone: string;
+    startTime: Date;
+    durationSeconds: number;
+};
+
+const formatDuration = (durationSeconds: number) => {
+    const totalSeconds = Math.max(0, Math.floor(durationSeconds));
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    const parts: string[] = [];
+    if (hours > 0) {
+        parts.push(`${hours}h`);
+    }
+    if (minutes > 0 || hours > 0) {
+        parts.push(`${minutes}m`);
+    }
+    parts.push(`${seconds}s`);
+    return parts.join(" ");
+};
+
+export function CallDetailsHeaderCard({
+    name,
+    status,
+    group,
+    phone,
+    startTime,
+    durationSeconds,
+}: Props) {
+    const mappedCallStatus = mapCallStatus(status);
+    const formattedTime = new Intl.DateTimeFormat("en-US", {
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+    }).format(startTime);
     return (
         <View style={sts.container}>
             <View style={sts.row}>
                 <View style={sts.rowT}>
                     <AppText variant="body" weight="bold">
-                        John Abraham
+                        {name}
                     </AppText>
-                    <StatusBadge status="D" />
+                    <StatusBadge status={group} />
                 </View>
                 <TextBadge
                     text={mappedCallStatus.label}
@@ -28,18 +68,18 @@ export function CallDetailsHeaderCard() {
             <View style={sts.rowT}>
                 <Phone size={16} color={AppColor.foreground_muted} />
                 <AppText variant="body-sm" muted>
-                    +1 234 567 890
+                    {phone}
                 </AppText>
             </View>
 
             <View style={sts.rowT}>
                 <Clock size={16} color={AppColor.foreground_muted} />
                 <AppText variant="body-sm" muted>
-                    Today, 10:00 AM
+                    {formattedTime}
                 </AppText>
                 <View style={sts.divider} />
                 <AppText variant="body-sm" muted>
-                    4m 12s
+                    {formatDuration(durationSeconds)}
                 </AppText>
             </View>
         </View>

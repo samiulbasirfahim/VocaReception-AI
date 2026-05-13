@@ -34,7 +34,7 @@ export default function CallListItem({ call }: Props) {
         >
             <View style={sts.row}>
                 <View style={sts.rowT}>
-                    <AppText>John Davidson</AppText>
+                    <AppText>{call.name ?? "Unknown"}</AppText>
                     <StatusBadge status={call.client_status ?? "D"} />
                 </View>
                 <AppText variant="body-sm" muted>

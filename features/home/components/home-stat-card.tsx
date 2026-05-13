@@ -1,6 +1,5 @@
 import { AppColor } from "@/constant/color";
 import AppText from "@/features/common/components/text";
-import { mapLeadingSign } from "@/features/common/utils/map-leading-sign";
 import { CheckCircle, LucideIcon, PhoneCall } from "lucide-react-native";
 import { StyleSheet, View } from "react-native";
 
@@ -10,7 +9,7 @@ type Props = {
     iconFg: string;
     amount: number;
     description: string;
-    amountToday: number;
+    amountTodayLabel: string;
 };
 
 function HomeStatCard({
@@ -19,7 +18,7 @@ function HomeStatCard({
     description,
     amount,
     iconBg,
-    amountToday,
+    amountTodayLabel,
 }: Props) {
     return (
         <View style={sts.container}>
@@ -38,27 +37,39 @@ function HomeStatCard({
                 {description}
             </AppText>
             <AppText style={{ color: iconFg }} variant="label">
-                {mapLeadingSign(amountToday)} today
+                {amountTodayLabel}
             </AppText>
         </View>
     );
 }
 
-export function HomeStatCards() {
+type HomeStatCardsProps = {
+    callsCount: number;
+    bookingsCount: number;
+    callsGrowthLabel: string;
+    bookedGrowthLabel: string;
+};
+
+export function HomeStatCards({
+    callsCount,
+    bookingsCount,
+    callsGrowthLabel,
+    bookedGrowthLabel,
+}: HomeStatCardsProps) {
     return (
         <View style={sts.outerContainer}>
             <HomeStatCard
-                amountToday={12}
+                amountTodayLabel={callsGrowthLabel}
                 description="Calls"
-                amount={3}
+                amount={callsCount}
                 iconBg="#EEF2FF"
                 iconFg="#2563EB"
                 icon={PhoneCall}
             />
             <HomeStatCard
-                amountToday={12}
+                amountTodayLabel={bookedGrowthLabel}
                 description="Booked"
-                amount={3}
+                amount={bookingsCount}
                 iconBg="#DCFCE7"
                 iconFg="#16A34A"
                 icon={CheckCircle}

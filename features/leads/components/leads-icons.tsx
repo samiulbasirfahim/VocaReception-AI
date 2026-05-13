@@ -2,13 +2,23 @@ import { View, StyleSheet } from "react-native";
 import LeadsIconWrapper from "./leads-icon-wrapper";
 import { BellRing, Check, SatelliteDish } from "lucide-react-native";
 
-export default function LeadsIcons() {
+type LeadsIconsProps = {
+    urgent?: number;
+    newCount?: number;
+    qualified?: number;
+};
+
+export default function LeadsIcons({
+    urgent = 0,
+    newCount = 0,
+    qualified = 0,
+}: LeadsIconsProps) {
     return (
         <View style={sts.container}>
             <LeadsIconWrapper
                 icon={BellRing}
                 label="Urgent"
-                count={3}
+                count={urgent}
                 textColor="#DC2626"
                 backgroundColor="#FEE2E2"
             />
@@ -16,7 +26,7 @@ export default function LeadsIcons() {
             <LeadsIconWrapper
                 icon={SatelliteDish}
                 label="New"
-                count={2}
+                count={newCount}
                 textColor="#4F6EF7"
                 backgroundColor="#EEF2FF"
             />
@@ -24,7 +34,7 @@ export default function LeadsIcons() {
             <LeadsIconWrapper
                 icon={Check}
                 label="Qualified"
-                count={3}
+                count={qualified}
                 textColor="#15803D"
                 backgroundColor="#DCFCE7"
             />

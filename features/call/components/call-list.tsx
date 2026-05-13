@@ -1,11 +1,15 @@
 import { StyleSheet, View } from "react-native";
-import { CALLS } from "@/lib/fake-data";
+import { Call } from "@/features/common/type/call";
 import { CallListWrapper } from "./call-list-wrapper";
 
-export default function CallList() {
+type CallListProps = {
+    calls: Call[];
+};
+
+export default function CallList({ calls }: CallListProps) {
     return (
         <View style={[sts.container]}>
-            {CALLS.map((call) => (
+            {calls.map((call) => (
                 <CallListWrapper key={call.id} call={call} />
             ))}
         </View>

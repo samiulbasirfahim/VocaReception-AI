@@ -2,6 +2,7 @@ import { Status } from "./status";
 
 export type Call = {
     id: string;
+    name?: string;
     client_status: Status;
     phone: string;
     time: Date;

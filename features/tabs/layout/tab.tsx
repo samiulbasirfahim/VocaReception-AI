@@ -1,9 +1,9 @@
 import { AppColor } from "@/constant/color";
 import { Tabs } from "@/lib/app-tab";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import TabLabelRender from "../components/label-renderer";
-import { TabIconRenderer } from "../components/icon-renderer";
 import { CalendarClock, Home, Phone, Users } from "lucide-react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { TabIconRenderer } from "../components/icon-renderer";
+import TabLabelRender from "../components/label-renderer";
 
 export default function TabLayout() {
     const { bottom } = useSafeAreaInsets();
